@@ -19,6 +19,7 @@ class turtlebot_telep():
 		
 	def move(self):
 		rospy.loginfo("move")
+		return True
 		
 	def shutdown(self):
 		rospy.loginfo("Stop")
