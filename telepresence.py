@@ -31,7 +31,7 @@ if __name__ == '__main__':
         telebot = turtlebot_telep()
         #keep checking for deliver_coffee until we shutdown the script with ctrl + c
 		while(telebot.move() and not rospy.is_shutdown()):
-                move_checks = move_checks + 1
+        	move_checks = move_checks + 1
 
     except rospy.ROSInterruptException:
         rospy.loginfo("Exception thrown")
