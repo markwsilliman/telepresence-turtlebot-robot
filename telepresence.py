@@ -21,7 +21,25 @@ class turtlebot_telep():
 		
 		data = json.load(urllib2.urlopen(self.server_public_dns + "/telepresence-turtlebot/api.php?read"))
 		rospy.loginfo(data["action"])
-		time.sleep(0.5)
+		
+		cmd_vel = rospy.Publisher('cmd_vel_mux/input/navi', Twist, queue_size=10)
+		move_cmd = Twist()
+		
+		if(data["action"] == "forward"):
+			move_cmd.linear.x = 0.1
+		if(data["action"] == "left"):
+			move_cmd.angular.z = -0.1
+		if(data["action"] == "right"):	
+			move_cmd.angular.z = 0.1
+		if(data["action"] == "reverse"):
+			move_cmd.linear.x = 0.1
+		if(data["action"] == "stop"):		
+			#do nothing; defaults are equivalent to stop
+		
+		cmd_vel.publish(move_cmd)
+			
+		#avoid overloading server by only requesting every 250 msec
+		time.sleep(0.25) 
 		return True
 		
 	def shutdown(self):
