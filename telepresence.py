@@ -24,8 +24,8 @@ class turtlebot_telep():
 		
 		cmd_vel = rospy.Publisher('cmd_vel_mux/input/navi', Twist, queue_size=10)
 		move_cmd = Twist()
-		move_cmd.angular.z = 0
-		move_cmd.linear.x = 0
+		move_cmd.angular.z = 0 # turn at radians/s
+		move_cmd.linear.x = 0 # forward at m/s
 		
 		if(data["action"] == "forward"):
 			move_cmd.linear.x = 0.2
