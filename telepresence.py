@@ -8,7 +8,7 @@ import roslib
 import time #for sleep()
 
 class turtlebot_telep():
-	server_public_dns = 'http://ec2-54-200-33-28.us-west-2.compute.amazonaws.com'
+	server_public_dns = 'http://ec2-52-11-246-12.us-west-2.compute.amazonaws.com/'
 	
 	def __init__(self):
 		#initialize ros node
@@ -18,7 +18,10 @@ class turtlebot_telep():
 		rospy.on_shutdown(self.shutdown)
 		
 	def move(self):
-		rospy.loginfo("move")
+		
+		data = json.load(urllib2.urlopen(self.server_public_dns + "/telepresence-turtlebot/api.php?read"))
+		rospy.loginfo(data["action"])
+		time.sleep(0.5)
 		return True
 		
 	def shutdown(self):
