@@ -32,7 +32,7 @@ class turtlebot_telep():
 		if(data["action"] == "right"):	
 			move_cmd.angular.z = 0.1
 		if(data["action"] == "reverse"):
-			move_cmd.linear.x = 0.1
+			move_cmd.linear.x = -0.1
 		
 		cmd_vel.publish(move_cmd)
 			
