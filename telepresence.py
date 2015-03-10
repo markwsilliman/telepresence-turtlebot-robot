@@ -28,13 +28,13 @@ class turtlebot_telep():
 		move_cmd.linear.x = 0
 		
 		if(data["action"] == "forward"):
-			move_cmd.linear.x = 0.1
+			move_cmd.linear.x = 0.2
 		if(data["action"] == "left"):
-			move_cmd.angular.z = -0.1
+			move_cmd.angular.z = -0.3
 		if(data["action"] == "right"):	
-			move_cmd.angular.z = 0.1
+			move_cmd.angular.z = 0.3
 		if(data["action"] == "reverse"):
-			move_cmd.linear.x = -0.1
+			move_cmd.linear.x = -0.2
 		
 		cmd_vel.publish(move_cmd)
 			
