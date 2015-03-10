@@ -33,8 +33,6 @@ class turtlebot_telep():
 			move_cmd.angular.z = 0.1
 		if(data["action"] == "reverse"):
 			move_cmd.linear.x = 0.1
-		if(data["action"] == "stop"):		
-			#do nothing; defaults are equivalent to stop
 		
 		cmd_vel.publish(move_cmd)
 			
